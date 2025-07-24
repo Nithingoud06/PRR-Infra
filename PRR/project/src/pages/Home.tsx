@@ -102,10 +102,10 @@ const Home = () => {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden parallax transform-3d"
         style={{
-          backgroundImage: 'linear-gradient(rgba(140, 142, 146, 0), rgba(249, 116, 22, 0)), url("C:\Users\Nithin goud\Desktop\PRR (2)\PRR\project\src\pages\PRR 5.jpg)',
+          backgroundImage: 'linear-gradient(rgba(47, 96, 193, 0.15), rgba(249, 116, 22, 0)), url("/PRR.jpg")',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-orange-600/60 layer-back"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-orange-600/60 layer-back"></div> */}
         
         {/* 3D Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
