@@ -15,10 +15,10 @@ export const sendEmail = async (formData, formType) => {
   }
   try {
     const result = await emailjs.send(
-      'service_8unv4ki',
-      'template_y9ztbzr',
+      'service_yhk7j7l',
+      'template_vxqb94j',
       formData,
-      'tZznRK8J__GaFZGD-'
+      'ekdc6Znuxl6SJ-zg_'
     );
     return { success: true, message: 'Email sent successfully' };
   } catch (error) {

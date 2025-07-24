@@ -109,7 +109,7 @@ Message: ${formData.message}`;
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-10">
       {/* Hero Section */}
       <section 
         ref={heroRef}
