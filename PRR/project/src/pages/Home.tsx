@@ -305,7 +305,7 @@ const Home = () => {
             <div className="animate-fadeInRight transform-3d">
               <div className="relative hover-3d">
                 <img
-                  src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                  src="C:\Users\Nithin goud\Desktop\PRR (2)\PRR\project\public\prr 098.jpg"
                   alt="Construction Site"
                   className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
                 />
