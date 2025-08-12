@@ -305,8 +305,8 @@ const Home = () => {
             <div className="animate-fadeInRight transform-3d">
               <div className="relative hover-3d">
                 <img
-                  src="C:\Users\Nithin goud\Desktop\PRR (2)\PRR\project\public\prr 098.jpg"
-                  alt="Construction Site"
+                  src="/prr 098.jpg"
+                  alt="Nithin Goud"
                   className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-xl"></div>
