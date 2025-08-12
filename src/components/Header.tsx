@@ -33,7 +33,7 @@ const Header = () => {
   };
 
   const handleCallClick = () => {
-    window.open('tel:+919876543210', '_self');
+    window.open('tel:9666903335', '_self');
   };
 
   return (
