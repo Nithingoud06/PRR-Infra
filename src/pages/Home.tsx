@@ -40,8 +40,8 @@ const Home = () => {
     if (statsInView) {
       const targets = {
         experience: 15,
-        projects: 250,
-        clients: 150,
+        projects: 853,
+        clients: 1000,
         awards: 25,
       };
 
@@ -305,7 +305,7 @@ const Home = () => {
             <div className="animate-fadeInRight transform-3d">
               <div className="relative hover-3d">
                 <img
-                  src="/prr 098.jpg"
+                  src=""
                   alt="Nithin Goud"
                   className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
                 />
