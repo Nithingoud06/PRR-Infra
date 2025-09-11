@@ -47,28 +47,25 @@ const About = () => {
 
   const achievements = [
     { number: '15+', text: 'Years of Excellence' },
-    { number: '250+', text: 'Projects Completed' },
-    { number: '150+', text: 'Satisfied Clients' },
+    { number: '853+', text: 'Projects Completed' },
+    { number: '1000+', text: 'Satisfied Clients' },
     { number: '25+', text: 'Industry Awards' },
   ];
 
   const team = [
     {
-      name: 'Rajesh Kumar',
+      name: 'Pradeep Reddy',
       position: 'Founder & CEO',
-      image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
       description: 'With over 20 years in construction industry.',
     },
     {
-      name: 'Priya Sharma',
+      name: 'Kiran',
       position: 'Chief Engineer',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
       description: 'Expert in civil engineering and project management.',
     },
     {
-      name: 'Ramesh Patel',
+      name: 'Shyam',
       position: 'Operations Manager',
-      image: 'https://images.pexels.com/photos/2182973/pexels-photo-2182973.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
       description: 'Ensures smooth execution of all projects.',
     },
   ];
@@ -141,7 +138,7 @@ const About = () => {
             <div className="animate-fadeInRight">
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                  src="/prr3.jpg"
                   alt="Construction Progress"
                   className="rounded-xl shadow-2xl w-full h-[500px] object-cover"
                 />
@@ -244,11 +241,7 @@ const About = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover"
-                  />
+                 
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-blue-900/20 to-transparent"></div>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">

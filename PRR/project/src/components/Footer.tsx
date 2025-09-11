@@ -48,7 +48,7 @@ const Footer = () => {
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/prr-infra-projects-047999377/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors duration-300"
@@ -56,7 +56,7 @@ const Footer = () => {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/rmc_in_hyderabad/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-800 p-3 rounded-full hover:bg-pink-600 transition-colors duration-300"
