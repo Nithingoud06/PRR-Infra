@@ -27,7 +27,7 @@ const Services = () => {
         'Decorative Concrete',
         'Concrete Repair & Restoration'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      image:'/concreteworks.jpg'
     },
     {
       icon: Hammer,
@@ -41,7 +41,7 @@ const Services = () => {
         'Utility Installation',
         'Project Management'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      image: '/civil.jpg'
     },
     {
       icon: Road,
@@ -69,7 +69,7 @@ const Services = () => {
         'Interior Finishing',
         'Landscaping'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      image: '/residential.jpg'
     },
     {
       icon: Factory,
@@ -83,7 +83,7 @@ const Services = () => {
         'Shopping Centers',
         'Mixed-Use Developments'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      image: '/commercial.jpg'
     },
     {
       icon: Wrench,
@@ -97,7 +97,7 @@ const Services = () => {
         'Facility Management',
         'Renovation Services'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+       image: 'httpt=crop'
     }
   ];
 
