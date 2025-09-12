@@ -27,7 +27,7 @@ const Services = () => {
         'Decorative Concrete',
         'Concrete Repair & Restoration'
       ],
-      image:'/concreteworks.jpg'
+      image:'/concrete work.jpg'
     },
     {
       icon: Hammer,
