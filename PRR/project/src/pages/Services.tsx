@@ -55,7 +55,7 @@ const Services = () => {
         'Traffic Infrastructure',
         'Road Maintenance'
       ],
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+      image: 'road.jpg'
     },
     {
       icon: Home,
@@ -97,7 +97,7 @@ const Services = () => {
         'Facility Management',
         'Renovation Services'
       ],
-       image: 'httpt=crop'
+       image: 'repair.jpg'
     }
   ];
 
