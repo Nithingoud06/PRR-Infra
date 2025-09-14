@@ -27,7 +27,7 @@ const Services = () => {
         'Decorative Concrete',
         'Concrete Repair & Restoration'
       ],
-      image:'/concrete work.jpg'
+      image:'/concreteworks.jpg'
     },
     {
       icon: Hammer,
@@ -55,7 +55,7 @@ const Services = () => {
         'Traffic Infrastructure',
         'Road Maintenance'
       ],
-      image: 'road.jpg'
+      image: '/road.jpg'
     },
     {
       icon: Home,
@@ -97,7 +97,7 @@ const Services = () => {
         'Facility Management',
         'Renovation Services'
       ],
-       image: 'repair.jpg'
+      image: '/repair.jpg'
     }
   ];
 

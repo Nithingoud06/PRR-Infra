@@ -78,7 +78,7 @@ Message: ${formData.message}`;
     {
       icon: MapPin,
       title: 'Visit Our Office',
-      details: ['123 Construction Avenue', 'Banjara Hills, Hyderabad', 'Telangana 500034'],
+      details: ['12-11-1558, Boudha Nagar, Bank Colony, Boudhanagar Colony, Secunderabad, Hyderabad, Telangana 500061 Construction Avenue', 'Banjara Hills, Hyderabad', 'Telangana 500034'],
     },
     {
       icon: Phone,
