@@ -2,6 +2,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Building2, Hammer, Loader as Road, Home, Factory, Wrench, CheckCircle, ArrowRight, Users, Clock, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Services = () => {
   const { ref: heroRef, inView: heroInView } = useInView({
@@ -179,10 +180,12 @@ const Services = () => {
                 </div>
                 <div className={index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
                   <div className="relative hover-lift">
-                    <img
+                    <OptimizedImage
                       src={service.image}
                       alt={service.title}
                       className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
+                      width={600}
+                      height={400}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-xl"></div>
                   </div>
