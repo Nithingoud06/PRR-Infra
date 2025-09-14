@@ -57,7 +57,7 @@ Subject: ${formData.subject}
 Message: ${formData.message}`;
       
       // Open WhatsApp with message
-      const whatsappUrl = `https://wa.me/91966690333543210?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/919666903335?text=${encodeURIComponent(whatsappMessage)}`;
       window.open(whatsappUrl, '_blank');
       
       // Reset form
@@ -78,22 +78,22 @@ Message: ${formData.message}`;
     {
       icon: MapPin,
       title: 'Visit Our Office',
-      details: ['123 Construction Avenue', 'Banjara Hills, Hyderabad', 'Telangana 500034'],
+      details: ['12-11-1558, Boudha Nagar, Bank Colony', 'Boudhanagar Colony, Secunderabad', 'Hyderabad, Telangana 500061'],
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 9666903335', '+91 9666903335', 'Mon-Sat: 9 AM - 6 PM'],
+      details: ['+91 9666903335', ],
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['prrinfraprojects@gmail.com', 'projects@prrinfra.com', 'We reply within 24 hours'],
+      details: ['prrinfraprojects@gmail.com',  'We reply within 24 hours'],
     },
     {
       icon: Clock,
       title: 'Working Hours',
-      details: ['Monday - Friday: 9 AM - 6 PM', 'Saturday: 9 AM - 4 PM', 'Sunday: Closed'],
+      details: ['24/7'],
     },
   ];
 
@@ -293,13 +293,22 @@ Message: ${formData.message}`;
                 </h2>
                 
                 {/* Map Placeholder */}
-                <div className="bg-gray-200 rounded-lg h-64 mb-6 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-600">Interactive Map</p>
-                    <p className="text-sm text-gray-500">Banjara Hills, Hyderabad</p>
-                  </div>
-                </div>
+                {/* Map Section */}
+<div className="rounded-lg overflow-hidden h-64 mb-6">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3643.285696879606!2d78.51350567489503!3d17.418419201910943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9929e4e54bbf%3A0x73aa593667f26032!2sPRR%20Infra%20Projects!5e1!3m2!1sen!2sin!4v1757850017935!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+
+
+          
 
                 {/* Quick Contact */}
                 <div className="space-y-4">

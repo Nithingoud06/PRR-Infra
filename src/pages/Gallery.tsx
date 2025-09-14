@@ -19,7 +19,7 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/building.jpg',
       category: 'residential',
       title: 'Modern Apartment Complex',
       location: 'Banjara Hills, Hyderabad',
@@ -27,7 +27,7 @@ const Gallery = () => {
     },
     {
       id: 2,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/software.jpg',
       category: 'commercial',
       title: 'Corporate Office Building',
       location: 'HITEC City, Hyderabad',
@@ -35,7 +35,7 @@ const Gallery = () => {
     },
     {
       id: 3,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/ringroad.jpg',
       category: 'infrastructure',
       title: 'Highway Bridge Construction',
       location: 'Outer Ring Road, Hyderabad',
@@ -43,7 +43,7 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/villa.jpg',
       category: 'residential',
       title: 'Luxury Villa Development',
       location: 'Jubilee Hills, Hyderabad',
@@ -51,7 +51,7 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/ShoppingMallComplex.jpg',
       category: 'commercial',
       title: 'Shopping Mall Complex',
       location: 'Kukatpally, Hyderabad',
@@ -59,7 +59,7 @@ const Gallery = () => {
     },
     {
       id: 6,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/metro.jpg',
       category: 'infrastructure',
       title: 'Metro Station Development',
       location: 'Secunderabad, Hyderabad',
@@ -67,7 +67,7 @@ const Gallery = () => {
     },
     {
       id: 7,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/housing.jpg',
       category: 'residential',
       title: 'Affordable Housing Project',
       location: 'Gachibowli, Hyderabad',
@@ -75,7 +75,7 @@ const Gallery = () => {
     },
     {
       id: 8,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/war.jpg',
       category: 'commercial',
       title: 'Industrial Warehouse',
       location: 'Medchal, Hyderabad',
@@ -83,7 +83,7 @@ const Gallery = () => {
     },
     {
       id: 9,
-      src: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
+      src: '/road.jpg',
       category: 'infrastructure',
       title: 'Road Development Project',
       location: 'Cyberabad, Hyderabad',
@@ -115,7 +115,7 @@ const Gallery = () => {
     : null;
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-10">
       {/* Hero Section */}
       <section 
         ref={heroRef}

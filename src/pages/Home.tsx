@@ -214,7 +214,7 @@ const Home = () => {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We provide comprehensive construction solutions with a focus on quality, 
-              innovation, and customer satisfaction.
+              innovation, and customer atisfaction.
             </p>
           </div>
 
@@ -305,7 +305,8 @@ const Home = () => {
             <div className="animate-fadeInRight transform-3d">
               <div className="relative hover-3d">
                 <img
-                  src=""
+                  src="/prr 098.jpg
+                  "
                   alt="Nithin Goud"
                   className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
                 />

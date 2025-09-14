@@ -113,8 +113,9 @@ const Footer = () => {
                   <MapPin className="h-5 w-5 text-orange-500 mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300">
-                      123 Construction Avenue,<br />
-                      Hyderabad, Telangana 500001
+                      12-11-1558, Boudha Nagar, Bank Colony<br />
+                      Boudhanagar Colony, Secunderabad<br />
+                      Hyderabad, Telangana 500061
                     </p>
                   </div>
                 </div>

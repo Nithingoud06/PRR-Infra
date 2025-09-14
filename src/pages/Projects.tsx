@@ -32,7 +32,7 @@ const Projects = () => {
       completedDate: '2023',
       client: 'Green Valley Developers',
       description: 'Luxury residential complex with 150 apartments featuring modern amenities.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/greenv.png',
       features: ['150 Apartments', 'Swimming Pool', 'Gym & Spa', 'Underground Parking']
     },
     {
@@ -43,7 +43,7 @@ const Projects = () => {
       completedDate: '2023',
       client: 'TechCorp Solutions',
       description: 'State-of-the-art commercial complex with modern office spaces.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/hitech.png',
       features: ['50,000 sq ft', 'LEED Certified', 'Smart Building', 'Conference Centers']
     },
     {
@@ -54,7 +54,7 @@ const Projects = () => {
       completedDate: '2022',
       client: 'HMDA',
       description: 'Major bridge construction project improving city connectivity.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/bridge.jpg',
       features: ['2.5 km Length', 'Steel Structure', '6 Lanes', 'Seismic Resistant']
     },
     {
@@ -65,7 +65,7 @@ const Projects = () => {
       completedDate: '2022',
       client: 'L&T Metro Rail',
       description: 'Modern metro station with integrated commercial spaces.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/metro.jpg',
       features: ['Underground Station', 'Commercial Complex', 'Parking Facility', 'Accessibility Features']
     },
     {
@@ -76,7 +76,7 @@ const Projects = () => {
       completedDate: '2023',
       client: 'Sunrise Builders',
       description: 'Affordable housing project with all modern amenities.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/building.jpg',
       features: ['200 Units', 'Playground', 'Community Hall', 'Security Systems']
     },
     {
@@ -87,7 +87,7 @@ const Projects = () => {
       completedDate: '2021',
       client: 'Retail Giants Pvt Ltd',
       description: 'Large-scale shopping complex with entertainment facilities.',
-      image: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      image: '/ShoppingMallComplex.jpg',
       features: ['3 Floors', 'Food Court', 'Multiplex', '500 Parking Spaces']
     }
   ];
