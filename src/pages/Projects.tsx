@@ -234,9 +234,9 @@ const Projects = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: '250+', label: 'Total Projects', icon: Building2 },
+              { number: '853+', label: 'Total Projects', icon: Building2 },
               { number: '15+', label: 'Years Experience', icon: Calendar },
-              { number: '150+', label: 'Happy Clients', icon: Users },
+              { number: '1000+', label: 'Happy Clients', icon: Users },
               { number: '25+', label: 'Awards Won', icon: Building2 }
             ].map((stat, index) => (
               <div
