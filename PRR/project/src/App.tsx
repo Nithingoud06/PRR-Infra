@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,9 +11,15 @@ import Projects from './pages/Projects';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
+import { preloadImages, criticalImages } from './utils/performance';
 import './styles/global.css';
 
 function App() {
+  // Preload critical images on app start
+  useEffect(() => {
+    preloadImages(criticalImages);
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />

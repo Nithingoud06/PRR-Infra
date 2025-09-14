@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { X, ZoomIn, Calendar, MapPin } from 'lucide-react';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -168,10 +169,12 @@ const Gallery = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => openModal(image.id)}
               >
-                <img
+                <OptimizedImage
                   src={image.src}
                   alt={image.title}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  width={400}
+                  height={256}
                 />
                 
                 {/* Overlay */}
@@ -219,10 +222,11 @@ const Gallery = () => {
               <X className="h-6 w-6" />
             </button>
             
-            <img
+            <OptimizedImage
               src={selectedImageData.src}
               alt={selectedImageData.title}
               className="max-w-full max-h-full object-contain rounded-lg"
+              priority={true}
             />
             
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
