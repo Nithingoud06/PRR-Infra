@@ -57,7 +57,7 @@ Subject: ${formData.subject}
 Message: ${formData.message}`;
       
       // Open WhatsApp with message
-      const whatsappUrl = `https://wa.me/91966690333543210?text=${encodeURIComponent(whatsappMessage)}`;
+      const whatsappUrl = `https://wa.me/919666903335?text=${encodeURIComponent(whatsappMessage)}`;
       window.open(whatsappUrl, '_blank');
       
       // Reset form
@@ -78,22 +78,22 @@ Message: ${formData.message}`;
     {
       icon: MapPin,
       title: 'Visit Our Office',
-      details: ['12-11-1558, Boudha Nagar, Bank Colony, Boudhanagar Colony, Secunderabad, Hyderabad, Telangana 500061 Construction Avenue', 'Banjara Hills, Hyderabad', 'Telangana 500034'],
+      details: ['12-11-1558, Boudha Nagar, Bank Colony', 'Boudhanagar Colony, Secunderabad', 'Hyderabad, Telangana 500061'],
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 9666903335', '+91 9666903335', 'Mon-Sat: 9 AM - 6 PM'],
+      details: ['+91 9666903335', ],
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['prrinfraprojects@gmail.com', 'projects@prrinfra.com', 'We reply within 24 hours'],
+      details: ['prrinfraprojects@gmail.com',  'We reply within 24 hours'],
     },
     {
       icon: Clock,
       title: 'Working Hours',
-      details: ['Monday - Friday: 9 AM - 6 PM', 'Saturday: 9 AM - 4 PM', 'Sunday: Closed'],
+      details: ['24/7'],
     },
   ];
 
@@ -297,7 +297,11 @@ Message: ${formData.message}`;
                   <div className="text-center">
                     <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-2" />
                     <p className="text-gray-600">Interactive Map</p>
-                    <p className="text-sm text-gray-500">Banjara Hills, Hyderabad</p>
+                    <p className="text-sm text-gray-500">
+                      12-11-1558, Boudha Nagar, Bank Colony<br />
+                      Boudhanagar Colony, Secunderabad<br />
+                      Hyderabad, Telangana 500061
+                    </p>
                   </div>
                 </div>
 

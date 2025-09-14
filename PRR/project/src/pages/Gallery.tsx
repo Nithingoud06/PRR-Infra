@@ -18,7 +18,7 @@ const Gallery = () => {
 
   const galleryImages = [
     {
-      id: 1
+      id: 1,
       src: '/building.jpg',
       category: 'residential',
       title: 'Modern Apartment Complex',
@@ -51,7 +51,7 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src:'/ShoppingMallComplex.jpg',
+      src: '/ShoppingMallComplex.jpg',
       category: 'commercial',
       title: 'Shopping Mall Complex',
       location: 'Kukatpally, Hyderabad',
