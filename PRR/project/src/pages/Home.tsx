@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { 
@@ -12,7 +12,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 
-const Home = () => {
+const Home = memo(() => {
   const [counters, setCounters] = useState({
     experience: 2,
     projects: 0,
@@ -35,7 +35,7 @@ const Home = () => {
     triggerOnce: true,
   });
 
-  // Animated Counter Effect
+  // Animated Counter Effect - Simplified for performance
   useEffect(() => {
     if (statsInView) {
       const targets = {
@@ -45,8 +45,9 @@ const Home = () => {
         awards: 25,
       };
 
-      const duration = 2000;
-      const increment = 50;
+      // Simplified animation with fewer intervals for better performance
+      const duration = 1500;
+      const increment = 100;
 
       Object.keys(targets).forEach((key) => {
         let current = 0;
@@ -68,7 +69,7 @@ const Home = () => {
     }
   }, [statsInView]);
 
-  const services = [
+  const services = useMemo(() => [
     {
       icon: Building2,
       title: 'Concrete Works',
@@ -84,16 +85,16 @@ const Home = () => {
       title: 'Road Projects',
       description: 'Professional road construction and infrastructure development.',
     },
-  ];
+  ], []);
 
-  const features = [
+  const features = useMemo(() => [
     'ISO 9001:2015 Certified',
     '24/7 Customer Support',
     'Experienced Team',
     'Quality Materials',
     'Timely Delivery',
     'Competitive Pricing',
-  ];
+  ], []);
 
   return (
     <div className="min-h-screen">
@@ -102,10 +103,10 @@ const Home = () => {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden parallax transform-3d"
         style={{
-          backgroundImage: 'linear-gradient(rgba(47, 96, 193, 0.15), rgba(249, 116, 22, 0)), url("/PRR.jpg")',
+          backgroundImage: 'url("/PRR.jpg")',
         }}
       >
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-orange-600/60 layer-back"></div> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-150/60 to-orange-150/60 layer-back"></div>
         
         {/* 3D Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
@@ -214,7 +215,7 @@ const Home = () => {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We provide comprehensive construction solutions with a focus on quality, 
-              innovation, and customer atisfaction.
+              innovation, and customer satisfaction.
             </p>
           </div>
 
@@ -267,7 +268,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/services"
-              className="btn-primary btn-3d group inline-flex items-center space-x-2 hover-lift-3d"
+              className="bg-blue-600 text-white hover:bg-blue-400 font-semibold py-3 px-8 rounded-lg transition-colors duration-30 group inline-flex items-center space-x-2"
             >
               <span>View All Services</span>
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -305,8 +306,7 @@ const Home = () => {
             <div className="animate-fadeInRight transform-3d">
               <div className="relative hover-3d">
                 <img
-                  src="/prr 098.jpg
-                  "
+                  src="/prr 098.jpg"
                   alt="Nithin Goud"
                   className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
                 />
@@ -360,6 +360,8 @@ const Home = () => {
       </section>
     </div>
   );
-};
+});
+
+Home.displayName = 'Home';
 
 export default Home;

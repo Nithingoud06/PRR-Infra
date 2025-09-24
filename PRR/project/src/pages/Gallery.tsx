@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState, memo, useMemo, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { X, ZoomIn, Calendar, MapPin } from 'lucide-react';
 import OptimizedImage from '../components/OptimizedImage';
 
-const Gallery = () => {
+const Gallery = memo(() => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -17,14 +17,15 @@ const Gallery = () => {
     triggerOnce: true,
   });
 
-  const galleryImages = [
+  // Memoize gallery images to prevent recreation on every render
+  const galleryImages = useMemo(() => [
     {
       id: 1,
       src: '/building.jpg',
       category: 'residential',
       title: 'Modern Apartment Complex',
       location: 'Banjara Hills, Hyderabad',
-      date: '2023'
+      date: '2025'
     },
     {
       id: 2,
@@ -32,7 +33,7 @@ const Gallery = () => {
       category: 'commercial',
       title: 'Corporate Office Building',
       location: 'HITEC City, Hyderabad',
-      date: '2023'
+      date: '2024'
     },
     {
       id: 3,
@@ -40,7 +41,7 @@ const Gallery = () => {
       category: 'infrastructure',
       title: 'Highway Bridge Construction',
       location: 'Outer Ring Road, Hyderabad',
-      date: '2022'
+      date: '2020'
     },
     {
       id: 4,
@@ -48,7 +49,7 @@ const Gallery = () => {
       category: 'residential',
       title: 'Luxury Villa Development',
       location: 'Jubilee Hills, Hyderabad',
-      date: '2023'
+      date: '2025'
     },
     {
       id: 5,
@@ -68,11 +69,11 @@ const Gallery = () => {
     },
     {
       id: 7,
-      src: '/housing.jpg',
+      src: '/AffordableHousingProject.jpg',
       category: 'residential',
       title: 'Affordable Housing Project',
       location: 'Gachibowli, Hyderabad',
-      date: '2023'
+      date: '2024'
     },
     {
       id: 8,
@@ -80,7 +81,7 @@ const Gallery = () => {
       category: 'commercial',
       title: 'Industrial Warehouse',
       location: 'Medchal, Hyderabad',
-      date: '2022'
+      date: '2025'
     },
     {
       id: 9,
@@ -88,32 +89,36 @@ const Gallery = () => {
       category: 'infrastructure',
       title: 'Road Development Project',
       location: 'Cyberabad, Hyderabad',
-      date: '2023'
+      date: '2024'
     }
-  ];
+  ], []);
 
-  const categories = [
+  const categories = useMemo(() => [
     { value: 'all', label: 'All Projects' },
     { value: 'residential', label: 'Residential' },
     { value: 'commercial', label: 'Commercial' },
     { value: 'infrastructure', label: 'Infrastructure' }
-  ];
+  ], []);
 
-  const filteredImages = activeCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(image => image.category === activeCategory);
+  const filteredImages = useMemo(() => 
+    activeCategory === 'all' 
+      ? galleryImages 
+      : galleryImages.filter(image => image.category === activeCategory),
+    [activeCategory, galleryImages]
+  );
 
-  const openModal = (imageId: number) => {
+  const openModal = useCallback((imageId: number) => {
     setSelectedImage(imageId);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedImage(null);
-  };
+  }, []);
 
-  const selectedImageData = selectedImage 
-    ? galleryImages.find(img => img.id === selectedImage)
-    : null;
+  const selectedImageData = useMemo(() => 
+    selectedImage ? galleryImages.find(img => img.id === selectedImage) : null,
+    [selectedImage, galleryImages]
+  );
 
   return (
     <div className="min-h-screen pt-10">
@@ -123,7 +128,7 @@ const Gallery = () => {
         className="section-padding bg-gradient-to-r from-blue-700 to-orange-600 text-white"
       >
         <div className="container-custom">
-          <div className={`text-center transition-all duration-1000 ${heroInView ? 'animate-fadeInUp' : 'opacity-0'}`}>
+          <div className={`text-center transition-opacity duration-500 ${heroInView ? 'opacity-100' : 'opacity-0'}`}>
             <h1 className="text-responsive-xl font-bold mb-6">
               Project <span className="text-orange-300">Gallery</span>
             </h1>
@@ -163,22 +168,22 @@ const Gallery = () => {
             {filteredImages.map((image, index) => (
               <div
                 key={image.id}
-                className={`group relative overflow-hidden rounded-xl shadow-lg hover-lift cursor-pointer transition-all duration-800 ${
-                  galleryInView ? 'animate-fadeInUp' : 'opacity-0'
+                className={`group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl cursor-pointer transition-shadow duration-300 ${
+                  galleryInView ? 'opacity-100' : 'opacity-0'
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ transitionDelay: `${index * 50}ms` }}
                 onClick={() => openModal(image.id)}
               >
                 <OptimizedImage
                   src={image.src}
                   alt={image.title}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                   width={400}
                   height={256}
                 />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <h3 className="text-lg font-semibold mb-2">{image.title}</h3>
                     <div className="flex items-center space-x-2 text-sm text-white/90 mb-1">
@@ -285,6 +290,8 @@ const Gallery = () => {
       </section>
     </div>
   );
-};
+});
+
+Gallery.displayName = 'Gallery';
 
 export default Gallery;

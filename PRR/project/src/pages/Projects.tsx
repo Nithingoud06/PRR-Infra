@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, memo, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { 
   Building2, 
@@ -9,8 +9,9 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
-const Projects = () => {
+const Projects = memo(() => {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const { ref: heroRef, inView: heroInView } = useInView({
@@ -23,7 +24,7 @@ const Projects = () => {
     triggerOnce: true,
   });
 
-  const projects = [
+  const projects = useMemo(() => [
     {
       id: 1,
       title: 'Green Valley Residences',
@@ -90,18 +91,21 @@ const Projects = () => {
       image: '/ShoppingMallComplex.jpg',
       features: ['3 Floors', 'Food Court', 'Multiplex', '500 Parking Spaces']
     }
-  ];
+  ], []);
 
-  const filterOptions = [
+  const filterOptions = useMemo(() => [
     { value: 'all', label: 'All Projects' },
     { value: 'residential', label: 'Residential' },
     { value: 'commercial', label: 'Commercial' },
     { value: 'infrastructure', label: 'Infrastructure' }
-  ];
+  ], []);
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects = useMemo(() => 
+    activeFilter === 'all' 
+      ? projects 
+      : projects.filter(project => project.category === activeFilter),
+    [activeFilter, projects]
+  );
 
   return (
     <div className="min-h-screen pt-10">
@@ -111,7 +115,7 @@ const Projects = () => {
         className="section-padding bg-gradient-to-r from-blue-700 to-orange-600 text-white"
       >
         <div className="container-custom">
-          <div className={`text-center transition-all duration-1000 ${heroInView ? 'animate-fadeInUp' : 'opacity-0'}`}>
+          <div className={`text-center transition-opacity duration-500 ${heroInView ? 'opacity-100' : 'opacity-0'}`}>
             <h1 className="text-responsive-xl font-bold mb-6">
               Our <span className="text-orange-300">Projects</span>
             </h1>
@@ -157,16 +161,18 @@ const Projects = () => {
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
-                className={`bg-white rounded-xl shadow-lg overflow-hidden hover-lift transition-all duration-800 ${
-                  projectsInView ? 'animate-fadeInUp' : 'opacity-0'
+                className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${
+                  projectsInView ? 'opacity-100' : 'opacity-0'
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
+                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                    width={400}
+                    height={192}
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
@@ -223,7 +229,7 @@ const Projects = () => {
       {/* Project Stats */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16 animate-fadeInUp">
+          <div className="text-center mb-16">
             <h2 className="text-responsive-lg font-bold text-gray-900 mb-4">
               Project <span className="gradient-text">Statistics</span>
             </h2>
@@ -234,15 +240,14 @@ const Projects = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: '250+', label: 'Total Projects', icon: Building2 },
+              { number: '853+', label: 'Total Projects', icon: Building2 },
               { number: '15+', label: 'Years Experience', icon: Calendar },
-              { number: '150+', label: 'Happy Clients', icon: Users },
+              { number: '1000+', label: 'Happy Clients', icon: Users },
               { number: '25+', label: 'Awards Won', icon: Building2 }
-            ].map((stat, index) => (
+            ].map((stat) => (
               <div
                 key={stat.label}
-                className={`text-center bg-gray-50 p-6 rounded-xl hover-lift animate-fadeInUp`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="text-center bg-gray-50 p-6 rounded-xl hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="bg-orange-500 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="h-8 w-8 text-white" />
@@ -262,7 +267,7 @@ const Projects = () => {
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-blue-700 to-orange-600 text-white">
         <div className="container-custom text-center">
-          <div className="animate-fadeInUp">
+          <div>
             <h2 className="text-responsive-lg font-bold mb-4">
               Ready to Start Your Project?
             </h2>
@@ -288,6 +293,8 @@ const Projects = () => {
       </section>
     </div>
   );
-};
+});
+
+Projects.displayName = 'Projects';
 
 export default Projects;
