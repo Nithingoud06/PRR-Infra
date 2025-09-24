@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Building2, Hammer, Loader as Road, Home, Factory, Wrench, CheckCircle, ArrowRight, Users, Clock, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import OptimizedImage from '../components/OptimizedImage';
 
-const Services = () => {
+const Services = memo(() => {
   const { ref: heroRef, inView: heroInView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -15,7 +15,7 @@ const Services = () => {
     triggerOnce: true,
   });
 
-  const services = [
+  const services = useMemo(() => [
     {
       icon: Building2,
       title: 'Concrete Works',
@@ -42,7 +42,7 @@ const Services = () => {
         'Utility Installation',
         'Project Management'
       ],
-      image: '/civil.jpg'
+      image: '/CivilConstruction.jpg'
     },
     {
       icon: Road,
@@ -70,7 +70,7 @@ const Services = () => {
         'Interior Finishing',
         'Landscaping'
       ],
-      image: '/residential.jpg'
+      image:'/ResidentialProjects.jpg'
     },
     {
       icon: Factory,
@@ -98,11 +98,11 @@ const Services = () => {
         'Facility Management',
         'Renovation Services'
       ],
-      image: '/repair.jpg'
+      image: '/MaintenanceServices.jpg'
     }
-  ];
+  ], []);
 
-  const benefits = [
+  const benefits = useMemo(() => [
     {
       icon: Users,
       title: 'Expert Team',
@@ -118,7 +118,7 @@ const Services = () => {
       title: 'Quality Assurance',
       description: 'ISO certified processes and materials ensure the highest quality standards.'
     }
-  ];
+  ], []);
 
   return (
     <div className="min-h-screen pt-10">
@@ -128,7 +128,7 @@ const Services = () => {
         className="section-padding bg-gradient-to-r from-blue-700 to-orange-600 text-white"
       >
         <div className="container-custom">
-          <div className={`text-center transition-all duration-1000 ${heroInView ? 'animate-fadeInUp' : 'opacity-0'}`}>
+          <div className={`text-center transition-opacity duration-500 ${heroInView ? 'opacity-100' : 'opacity-0'}`}>
             <h1 className="text-responsive-xl font-bold mb-6">
               Our <span className="text-orange-300">Services</span>
             </h1>
@@ -147,10 +147,10 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-all duration-800 ${
-                  servicesInView ? 'animate-fadeInUp' : 'opacity-0'
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center transition-opacity duration-500 ${
+                  servicesInView ? 'opacity-100' : 'opacity-0'
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
                   <div className="bg-blue-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
@@ -179,7 +179,7 @@ const Services = () => {
                   </Link>
                 </div>
                 <div className={index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
-                  <div className="relative hover-lift">
+                  <div className="relative">
                     <OptimizedImage
                       src={service.image}
                       alt={service.title}
@@ -298,6 +298,8 @@ const Services = () => {
       </section>
     </div>
   );
-};
+});
+
+Services.displayName = 'Services';
 
 export default Services;

@@ -6,23 +6,28 @@ export const preloadImage = (src: string): Promise<void> => {
     img.onload = () => resolve();
     img.onerror = reject;
     img.src = src;
+    // Set a timeout to avoid hanging
+    setTimeout(() => reject(new Error('Image load timeout')), 5000);
   });
 };
 
 export const preloadImages = async (srcs: string[]): Promise<void> => {
   try {
-    await Promise.all(srcs.map(src => preloadImage(src)));
+    // Limit concurrent preloads to avoid overwhelming the browser
+    const batchSize = 3;
+    for (let i = 0; i < srcs.length; i += batchSize) {
+      const batch = srcs.slice(i, i + batchSize);
+      await Promise.allSettled(batch.map(src => preloadImage(src)));
+    }
   } catch (error) {
     console.warn('Some images failed to preload:', error);
   }
 };
 
-// Critical images that should be preloaded
+// Critical images that should be preloaded (only the most important ones)
 export const criticalImages = [
-  '/concreteworks.jpg',
-  '/civil.jpg',
-  '/residential.jpg',
-  '/commercial.jpg'
+  '/PRR.jpg', // Hero background
+  '/prr 098.jpg', // About section
 ];
 
 // Debounce function for performance
@@ -50,4 +55,25 @@ export const throttle = <T extends (...args: any[]) => any>(
       setTimeout(() => (inThrottle = false), limit);
     }
   };
+};
+
+// Intersection Observer utility for better performance
+export const createIntersectionObserver = (
+  callback: IntersectionObserverCallback,
+  options: IntersectionObserverInit = {}
+) => {
+  const defaultOptions: IntersectionObserverInit = {
+    threshold: 0.1,
+    rootMargin: '50px',
+    ...options,
+  };
+  
+  return new IntersectionObserver(callback, defaultOptions);
+};
+
+// Image optimization helper
+export const getOptimizedImageSrc = (src: string, width?: number, quality = 80) => {
+  // In production, you would integrate with an image optimization service
+  // For now, return the original src
+  return src;
 };

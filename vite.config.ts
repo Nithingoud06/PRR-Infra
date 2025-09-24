@@ -5,7 +5,19 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    include: ['react', 'react-dom', 'react-router-dom', 'lucide-react', 'react-intersection-observer'],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          icons: ['lucide-react'],
+          utils: ['react-intersection-observer'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     proxy: {

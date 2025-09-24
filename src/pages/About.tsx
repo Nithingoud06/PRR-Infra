@@ -56,17 +56,32 @@ const About = () => {
     {
       name: 'Pradeep Reddy',
       position: 'Founder & CEO',
-      description: 'With over 20 years in construction industry.',
+      description: 'With over 20 years in construction industry, leading PRR INFRA PROJECTS to excellence.',
+      
     },
     {
-      name: 'Kiran',
+      name: 'Kiran P',
       position: 'Chief Engineer',
-      description: 'Expert in civil engineering and project management.',
+      description: 'Expert in civil engineering and project management with 15+ years of experience.',
+      
     },
     {
-      name: 'Shyam',
+      name: 'Shyam Lal',
       position: 'Operations Manager',
-      description: 'Ensures smooth execution of all projects.',
+      description: 'Ensures smooth execution of all projects with meticulous planning and coordination.',
+    
+    },
+    {
+      name: 'Ravali P',
+      position: 'Sales Manager',
+      description: 'Leading our sales team with expertise in client relations and business development.',
+  
+    },
+    {
+      name: 'Sirivennela',
+      position: 'Sales Executive',
+      description: 'Specialized in customer engagement and project consultation services.',
+      
     },
   ];
 
@@ -233,7 +248,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div
                 key={member.name}
@@ -241,7 +256,11 @@ const About = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative mb-6">
-                 
+                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-orange-500 bg-gray-200 flex items-center justify-center">
+                    <div className="text-gray-500 text-2xl font-bold">
+                      {member.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                  </div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-t from-blue-900/20 to-transparent"></div>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
