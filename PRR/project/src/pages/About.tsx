@@ -72,17 +72,12 @@ const About = () => {
     
     },
     {
-      name: 'Ravali P',
+      name: 'Sirivennela',
       position: 'Sales Manager',
       description: 'Leading our sales team with expertise in client relations and business development.',
   
     },
-    {
-      name: 'Sirivennela',
-      position: 'Sales Executive',
-      description: 'Specialized in customer engagement and project consultation services.',
-      
-    },
+  
   ];
 
   return (
@@ -266,7 +261,7 @@ const About = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {member.name}
                 </h3>
-                <p className="text-orange-500 font-medium mb-3">+
+                <p className="text-orange-500 font-medium mb-3">
                   {member.position}
                 </p>
                 <p className="text-gray-600 text-sm leading-relaxed">

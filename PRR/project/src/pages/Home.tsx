@@ -35,7 +35,7 @@ const Home = memo(() => {
     triggerOnce: true,
   });
 
-  // Animated Counter Effect - Simplified for performance
+  // Simplified Counter Effect for maximum performance
   useEffect(() => {
     if (statsInView) {
       const targets = {
@@ -45,27 +45,29 @@ const Home = memo(() => {
         awards: 25,
       };
 
-      // Simplified animation with fewer intervals for better performance
-      const duration = 1500;
-      const increment = 100;
+      // Use requestAnimationFrame for better performance
+      let startTime = Date.now();
+      const duration = 1000; // Reduced duration
 
-      Object.keys(targets).forEach((key) => {
-        let current = 0;
-        const target = targets[key as keyof typeof targets];
-        const step = target / (duration / increment);
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        Object.keys(targets).forEach((key) => {
+          const target = targets[key as keyof typeof targets];
+          const current = Math.floor(target * progress);
           setCounters(prev => ({
             ...prev,
-            [key]: Math.floor(current)
+            [key]: current
           }));
-        }, increment);
-      });
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      requestAnimationFrame(animate);
     }
   }, [statsInView]);
 
@@ -108,35 +110,35 @@ const Home = memo(() => {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-150/60 to-orange-150/60 layer-back"></div>
         
-        {/* 3D Floating Elements */}
+        {/* Simplified Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 animate-rotate3d">
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl hover-3d animate-glowing">
-              <Building2 className="h-12 w-12 text-orange-400" />
+          <div className="absolute top-20 left-10 animate-float">
+            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+              <Building2 className="h-8 w-8 text-orange-400" />
             </div>
           </div>
-          <div className="absolute top-32 right-16 animate-bounce3d" style={{ animationDelay: '1s' }}>
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl hover-3d animate-morphing">
-              <Trophy className="h-12 w-12 text-orange-400" />
+          <div className="absolute top-32 right-16 animate-float" style={{ animationDelay: '1s' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+              <Trophy className="h-8 w-8 text-orange-400" />
             </div>
           </div>
-          <div className="absolute bottom-32 left-20 animate-flip3d" style={{ animationDelay: '2s' }}>
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl hover-3d">
-              <Users className="h-12 w-12 text-orange-400" />
+          <div className="absolute bottom-32 left-20 animate-float" style={{ animationDelay: '2s' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+              <Users className="h-8 w-8 text-orange-400" />
             </div>
           </div>
-          <div className="absolute bottom-40 right-32 animate-cube3d" style={{ animationDelay: '0.5s' }}>
-            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl hover-3d">
-              <Clock className="h-12 w-12 text-orange-400" />
+          <div className="absolute bottom-40 right-32 animate-float" style={{ animationDelay: '0.5s' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
+              <Clock className="h-8 w-8 text-orange-400" />
             </div>
           </div>
         </div>
         
         <div className="relative z-10 container-custom text-center text-white layer-front">
           <div className={`transition-all duration-1000 ${heroInView ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <h1 className="text-responsive-xl font-bold mb-6 leading-tight animate-textGlow">
+            <h1 className="text-responsive-xl font-bold mb-6 leading-tight">
               Building the Future with{' '}
-              <span className="text-orange-400 animate-bounce3d inline-block transform-3d">Strength</span>
+              <span className="text-orange-400">Strength</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Your trusted construction partner in Hyderabad, delivering excellence in 
@@ -145,14 +147,14 @@ const Home = memo(() => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 to="/booking"
-                className="btn-secondary btn-3d group flex items-center space-x-2 hover-lift-3d"
+                className="btn-secondary group flex items-center space-x-2"
               >
                 <span>Book Now</span>
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/contact"
-                className="btn-outline btn-3d group flex items-center space-x-2 hover-lift-3d"
+                className="btn-outline group flex items-center space-x-2"
               >
                 <span>Get in Touch</span>
                 <PlayCircle className="h-5 w-5" />
@@ -166,7 +168,7 @@ const Home = memo(() => {
       <section ref={statsRef} className="section-padding bg-gray-900 text-white">
         <div className="container-custom">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className={`text-center transition-all duration-800 hover-3d ${statsInView ? 'animate-slideInRotate' : 'opacity-0'}`}>
+            <div className={`text-center transition-opacity duration-500 ${statsInView ? 'opacity-100' : 'opacity-0'}`}>
               <div className="text-4xl lg:text-5xl font-bold text-orange-500 mb-2">
                 {counters.experience}+
               </div>
@@ -175,7 +177,7 @@ const Home = memo(() => {
                 <span>Years Experience</span>
               </div>
             </div>
-            <div className={`text-center transition-all duration-800 hover-3d ${statsInView ? 'animate-slideInRotate' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+            <div className={`text-center transition-opacity duration-500 ${statsInView ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.1s' }}>
               <div className="text-4xl lg:text-5xl font-bold text-orange-500 mb-2">
                 {counters.projects}+
               </div>
@@ -184,7 +186,7 @@ const Home = memo(() => {
                 <span>Projects Completed</span>
               </div>
             </div>
-            <div className={`text-center transition-all duration-800 hover-3d ${statsInView ? 'animate-slideInRotate' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+            <div className={`text-center transition-opacity duration-500 ${statsInView ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.2s' }}>
               <div className="text-4xl lg:text-5xl font-bold text-orange-500 mb-2">
                 {counters.clients}+
               </div>
@@ -193,7 +195,7 @@ const Home = memo(() => {
                 <span>Happy Clients</span>
               </div>
             </div>
-            <div className={`text-center transition-all duration-800 hover-3d ${statsInView ? 'animate-slideInRotate' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+            <div className={`text-center transition-opacity duration-500 ${statsInView ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '0.3s' }}>
               <div className="text-4xl lg:text-5xl font-bold text-orange-500 mb-2">
                 {counters.awards}+
               </div>
@@ -209,9 +211,9 @@ const Home = memo(() => {
       {/* Services Preview */}
       <section ref={servicesRef} className="section-padding bg-white">
         <div className="container-custom">
-          <div className={`text-center mb-16 transition-all duration-800 ${servicesInView ? 'animate-fadeInUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 transition-opacity duration-500 ${servicesInView ? 'opacity-100' : 'opacity-0'}`}>
             <h2 className="text-responsive-lg font-bold text-gray-900 mb-4">
-              Our <span className="gradient-text-3d animate-textGlow">Core Services</span>
+              Our <span className="gradient-text">Core Services</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We provide comprehensive construction solutions with a focus on quality, 
@@ -223,44 +225,26 @@ const Home = memo(() => {
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className={`flip-card h-80 transition-all duration-800 ${
-                  servicesInView ? 'animate-zoomInRotate' : 'opacity-0'
+                className={`bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 h-80 flex flex-col items-center justify-center ${
+                  servicesInView ? 'opacity-100' : 'opacity-0'
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="flip-card-inner">
-                  {/* Front */}
-                  <div className="flip-card-front bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center justify-center">
-                    <div className="bg-blue-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 animate-bounce3d">
-                      <service.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-center">
-                      {service.description}
-                    </p>
-                  </div>
-                  
-                  {/* Back */}
-                  <div className="flip-card-back bg-gradient-to-br from-blue-700 to-orange-600 p-8 rounded-xl shadow-lg text-white flex flex-col items-center justify-center">
-                    <div className="bg-white/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 animate-rotate3d">
-                      <service.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4 text-center">
-                      {service.title}
-                    </h3>
-                    <p className="text-white/90 text-center mb-4">
-                      Professional {service.title.toLowerCase()} services with quality guarantee
-                    </p>
-                    <Link
-                      to="/services"
-                      className="bg-white text-blue-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
+                <div className="bg-blue-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                  <service.icon className="h-8 w-8 text-white" />
                 </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-center mb-6">
+                  {service.description}
+                </p>
+                <Link
+                  to="/services"
+                  className="bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors duration-300"
+                >
+                  Learn More
+                </Link>
               </div>
             ))}
           </div>
@@ -281,9 +265,9 @@ const Home = memo(() => {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fadeInLeft transform-3d">
+            <div>
               <h2 className="text-responsive-lg font-bold text-gray-900 mb-6">
-                Why Choose <span className="gradient-text-3d animate-textGlow">PRR INFRA?</span>
+                Why Choose <span className="gradient-text">PRR INFRA?</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 With over 15 years of experience in the construction industry, 
@@ -291,11 +275,10 @@ const Home = memo(() => {
                 on time and within budget.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {features.map((feature, index) => (
+                {features.map((feature) => (
                   <div
                     key={feature}
-                    className="flex items-center space-x-3 animate-fadeInUp hover-tilt"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className="flex items-center space-x-3"
                   >
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700 font-medium">{feature}</span>
@@ -303,25 +286,25 @@ const Home = memo(() => {
                 ))}
               </div>
             </div>
-            <div className="animate-fadeInRight transform-3d">
-              <div className="relative hover-3d">
+            <div>
+              <div className="relative">
                 <img
                   src="/prr 098.jpg"
                   alt="Nithin Goud"
-                  className="rounded-xl shadow-2xl w-full h-[400px] object-cover animate-glowing"
+                  className="rounded-xl shadow-2xl w-full h-[400px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-xl"></div>
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="glass-3d p-4 rounded-lg hover-lift-3d">
+                  <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg">
                     <div className="flex items-center space-x-2 text-yellow-500 mb-2">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-current" />
                       ))}
                     </div>
-                    <p className="text-white font-semibold">
+                    <p className="text-gray-900 font-semibold">
                       "Outstanding quality and professional service!"
                     </p>
-                    <p className="text-white/80 text-sm">- Satisfied Client</p>
+                    <p className="text-gray-600 text-sm">- Satisfied Client</p>
                   </div>
                 </div>
               </div>
@@ -333,7 +316,7 @@ const Home = memo(() => {
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-blue-700 to-orange-600 text-white">
         <div className="container-custom text-center">
-          <div className="animate-fadeInUp">
+          <div>
             <h2 className="text-responsive-lg font-bold mb-4">
               Ready to Start Your Project?
             </h2>
@@ -344,13 +327,13 @@ const Home = memo(() => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg btn-3d hover-lift-3d"
+                className="bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
               >
                 Get Free Quote
               </Link>
               <Link
                 to="/projects"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold py-3 px-8 rounded-lg btn-3d hover-lift-3d"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
               >
                 View Our Work
               </Link>
