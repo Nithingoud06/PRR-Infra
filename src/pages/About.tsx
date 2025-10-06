@@ -72,17 +72,12 @@ const About = () => {
     
     },
     {
-      name: 'Ravali P',
+      name: 'Sirivennela',
       position: 'Sales Manager',
       description: 'Leading our sales team with expertise in client relations and business development.',
   
     },
-    {
-      name: 'Sirivennela',
-      position: 'Sales Executive',
-      description: 'Specialized in customer engagement and project consultation services.',
-      
-    },
+  
   ];
 
   return (
