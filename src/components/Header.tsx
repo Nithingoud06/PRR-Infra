@@ -100,9 +100,10 @@ const Header = () => {
                 ? 'bg-gradient-to-br from-blue-600 to-blue-800 shadow-lg' 
                 : 'bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm'
             }`}>
-              <img src="\IMG_0187[1].PNG" alt="PRR INFRA PROJECTS" className="h-100 w-20 " />
+              <img src="\PRR LOGO 1.png" alt="PRR INFRA PROJECTS" className="h-100 w-20 " />
               <div className="absolute inset-10 bg-gradient-to-br from-orange-600/20 to-orange-600/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
+          
             <div className="flex flex-col">
               <span className={`text-2xl md:text-3xl font-bold transition-all duration-300 ${
                 isScrolled 
